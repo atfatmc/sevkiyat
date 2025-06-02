@@ -36,7 +36,37 @@ The application will start on port 8080.
 ### Authentication
 
 - `POST /api/auth/register` - Register a new user
+{
+    "username": "atfatmc",
+    "password": "atfatmc",
+    "company": "Developer",
+    "commissionRate": 0,
+    "status": true,
+    "roles": [
+        {
+            "name": "ROLE_ADMIN",
+            "permissions": [
+                {
+                    "name": "COMPANY_READ"
+                },
+                {
+                    "name": "COMPANY_UPDATE"
+                },
+                {
+                    "name": "MENU_COMPANY"
+                }
+            ]
+        }
+    ]
+}
+
+
 - `POST /api/auth/login` - Login and get JWT token
+{
+    "username": "atfatmc",
+    "password": "atfatmc"
+}
+
 - `POST /api/auth/logout` - Logout (invalidate token)
 
 ### User Management
@@ -44,13 +74,14 @@ The application will start on port 8080.
 - `GET /api/users` - Get all users (Admin only)
 - `GET /api/users/{id}` - Get user by ID
 - `PUT /api/users/{id}` - Update user
+{
+    "username": "atfatmc",
+    "company": "Developerr",
+    "commissionRate": 1.0,
+    "status": true
+}
+
 - `DELETE /api/users/{id}` - Delete user (Admin only)
-
-## Default Admin User
-
-The system creates a default admin user on startup:
-- Username: admin
-- Password: admin123
 
 ## Security
 
@@ -61,11 +92,10 @@ The system creates a default admin user on startup:
 
 ## Database
 
-The application uses H2 in-memory database by default. The database console is available at:
-- URL: http://localhost:8080/h2-console
-- JDBC URL: jdbc:h2:mem:userdb
-- Username: sa
-- Password: (empty)
+POSTGRES_DB=postgres_db
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
+POSTGRES_PORT=5432
 
 ## Roles and Permissions
 
